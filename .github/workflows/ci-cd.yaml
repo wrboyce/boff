@@ -122,7 +122,10 @@ jobs:
       - run: uv sync --group=ci
       - name: Generate Changelog Preview
         run: |
-          uv run cz changelog --dry-run --start-rev $(git describe --tags --abbrev=0) > pr_changelog.md
+          NEXT_VERSION="$(uv run cz bump --get-next --yes || true)"
+          [ -n "${NEXT_VERSION}" ] && NEXT_VERSION="v${NEXT_VERSION}"
+          [ -n "${NEXT_VERSION}" ] && echo "BUMP_MESSAGE=$(uv run cz bump --dry-run | cat | head -1)" >> $GITHUB_ENV
+          uv run cz changelog --dry-run --start-rev $(git describe --tags --abbrev=0) --unreleased-version=${NEXT_VERSION} > pr_changelog.md
           echo "CHANGELOG_PREVIEW<<EOF" >> $GITHUB_ENV
           cat pr_changelog.md >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
@@ -131,11 +134,11 @@ jobs:
           message: |
             ## 📉 Changelog Preview
 
+            ${{ env.BUMP_MESSAGE }}
+
             ```markdown
             ${{ env.CHANGELOG_PREVIEW }}
             ```
-
-            ⚠️ **Ensure your commits follow [Gitmoji Conventional Commits](https://github.com/ljnsn/cz-conventional-gitmoji) to be included in the release!**
           comment-tag: changelog-preview
 
   publish:
