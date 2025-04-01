@@ -1,6 +1,6 @@
 # boff
 
-[![📦️ PyPI](https://img.shields.io/pypi/v/boff)](https://pypi.org/project/boff/) [![👷 CI/CD](https://github.com/wrboyce/boff/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/wrboyce/boff/actions/workflows/ci.yaml) [![🧪 Coverage](https://codecov.io/gh/wrboyce/boff/graph/badge.svg?token=QG683U5IKA)](https://codecov.io/gh/wrboyce/boff)
+[![📦️ PyPI](https://img.shields.io/pypi/v/boff)](https://pypi.org/project/boff/) [![👷 CI/CD](https://github.com/wrboyce/boff/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/wrboyce/boff/actions/workflows/ci-cd.yaml) [![🧪 Coverage](https://codecov.io/gh/wrboyce/boff/graph/badge.svg?token=QG683U5IKA)](https://codecov.io/gh/wrboyce/boff)
 
 `boff` (Buffer Overflow Finder) is a tool for generating and analyzing cyclic patterns, similar to pattern_create and pattern_offset from Metasploit. It helps exploit developers identify exact buffer overflow offsets across multiple architectures, including 16-bit, 32-bit, and 64-bit platforms.
 
