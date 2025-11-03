@@ -34,7 +34,7 @@ jobs:
         with:
           enable-cache: true
       - run: uv run pytest --cov --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
-      - uses: mikepenz/action-junit-report@v5
+      - uses: mikepenz/action-junit-report@v6
         if: success() || failure()
         with:
           check_name: ✅ Test Report
